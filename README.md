@@ -14,6 +14,9 @@ Does not require installation
 ## Usage
 
 Just enter text on the desired hour and click on the save button for that hour, later when you return the text you enter will still be there
+```md
+    ![alt text](assets/WeekPlanner1.png)
+    ```
 
 ## Credits
 
