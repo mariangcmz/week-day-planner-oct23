@@ -2,17 +2,30 @@ var hours = [9, 10, 11, 12, 13, 14, 15, 16, 17]
 var container = document.querySelector(".container-fluid")
 var timeblockTemplate = document.querySelector("#timeblock-template")
 var todaysDate = new Date().toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "long", year: "numeric" })
-console.log(todaysDate)
-var currentDay =document.getElementById("currentDay")
+
+var currentDay = document.getElementById("currentDay")
 currentDay.textContent = todaysDate
+var currentHour = new Date().getHours()
+
+
 
 for (let index = 0; index < hours.length; index++) {
-    const element = hours[index];
     var timeblock = timeblockTemplate.cloneNode(true).content
     timeblock.querySelector(".hour").textContent = getTimeStamp(hours[index])
+    timeblock.querySelector(".description").classList.add(getClassName(hours[index]))
+    timeblock.querySelector(".description").value = localStorage.getItem(hours[index]) || ""
     container.append(timeblock)
-
 }
+
+var buttons = document.querySelectorAll(".saveBtn")
+var textAreas = document.querySelectorAll(".description")
+
+    buttons.forEach((button, i) => {
+        button.addEventListener("click", ()=>{
+            localStorage.setItem(hours[i], textAreas[i].value)
+        })
+    })
+
 function getTimeStamp(hourNumber) {
     switch (hourNumber) {
         case 9:
@@ -38,4 +51,18 @@ function getTimeStamp(hourNumber) {
         default:
             break;
     }
+}
+function getClassName(hourNumber) {
+    if (hourNumber > currentHour) {
+        return "past"
+
+    }
+    else if (hourNumber === currentHour) {
+        return "present"
+    }
+    else {
+        return "future"
+    }
+
+
 }
