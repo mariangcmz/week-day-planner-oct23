@@ -15,7 +15,7 @@ Does not require installation
 
 Just enter text on the desired hour and click on the save button for that hour, later when you return the text you enter will still be there
 
-![planner](assets/WeekPlanner1.png)
+![planner](Assets\WeekPlanner1.png)
    
 
 ## Credits
